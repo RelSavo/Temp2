@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="Temp2Website\" title="Temp2Website"  description="This is the root of my site map - do not display.">
+      <siteMapNode url="~/Default.aspx" title="Home"  description="Home page of website." />
+      <siteMapNode url="~/About.aspx" title="About"  description="About page of the website." />
+      <siteMapNode url="~/Contact.aspx" title="Contact"  description="Contact page of the website." />
+      <siteMapNode url="~/XMLFiles/XMLGridView.aspx" title="XML Grid"  description="A demonstration of using XML sheets to populate a grid view." />
+      <siteMapNode url="" title="Products" description="Product menu root.">
+        <siteMapNode url="~/SiteMapPages/Hardware.aspx" title="Hardware" description="Hardware page." />
+        <siteMapNode url="~/SiteMapPages/Software.aspx" title="Software" description="Software page." />
+      </siteMapNode>
+      <siteMapNode url="" title="Services" description="Services menu root.">
+        <siteMapNode url="~/SiteMapPages/Consulting.aspx" title="Consulting" description="Consulting page." />
+        <siteMapNode url="~/SiteMapPages/Training.aspx" title="Training" description="Training page." />
+        <siteMapNode url="~/SiteMapPages/Support.aspx" title="Support" description="Support page." />
+      </siteMapNode>
+    </siteMapNode>
+</siteMap>
