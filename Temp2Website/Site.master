@@ -49,12 +49,38 @@
                     <a class="navbar-brand" runat="server" href="~/">Application name</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+<%--                    <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
                         <li><a runat="server" href="~/XMLFiles/XMLGridView.aspx">XML Page</a></li>
-                    </ul>
+                    </ul> This is the bootstrap version of a simple menu.--%>
+                    
+                    <!--XML MENU START-->
+                    <!------------------>
+                    <asp:Menu ID="xmlMenuDemo" runat="server" 
+                        DataSourceID="xmlMenuDemoDataSource" 
+                        Orientation="Horizontal"
+                        StaticDisplayLevels="1"
+                        IncludeStyleBlock="false"
+                        StaticMenuStyle-CssClass="nav navbar-nav"
+                        StaticSelectedStyle-CssClass="active"
+                        DynamicMenuStyle-CssClass="dropdown-menu"
+                        EnableViewState="false"
+                        EnableTheming="false">   
+                    </asp:Menu>
+                    <!--Remove float styling that was injected for the menu control-->
+                    <script>
+                        $(function ()
+                        {
+                            //Isolate the context for applying Bootstrap styling.
+                            $('#xmlMenuDemo').next().removeAttr('style');
+                        });
+                    </script>
+                    <asp:SiteMapDataSource ID="xmlMenuDemoDataSource" runat="server" showStartingNode="false"/>
+                    <!------------------>
+                    <!--XML MENU END-->
+
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
