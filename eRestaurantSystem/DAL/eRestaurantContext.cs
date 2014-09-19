@@ -17,6 +17,6 @@ namespace eRestaurantSystem.DAL
         public eRestaurantContext() : base("name=EatIn") { }                            //ConnectionString to the database found in web config.
 
         public DbSet<SpecialEvent> SpecialEvents { get; set; }                          //DBSets are created for each entit; to be referenced by the application.
-
+        public DbSet<Reservations> Reservactions { get; set; }
     }
 }

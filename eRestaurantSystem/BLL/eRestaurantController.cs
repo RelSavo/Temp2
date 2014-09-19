@@ -24,5 +24,14 @@ namespace eRestaurantSystem.BLL
                 return context.SpecialEvents.ToList();
             }
         }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Reservations> Reservation_List ()
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                return context.Reservactions.ToList();
+            }
+        }
     }
 }
