@@ -12,7 +12,9 @@
         <siteMapNode url="" title="Services" description="Services menu root.">
             <siteMapNode url="~/SiteMapPages/Consulting.aspx" title="Consulting" description="Consulting page." />
             <siteMapNode url="~/SiteMapPages/Training.aspx" title="Training" description="Training page." />
-            <siteMapNode url="~/SiteMapPages/Support.aspx" title="Support" description="Support page." />
+            <siteMapNode url="~/SiteMapPages/Support.aspx" title="Support" description="Support page.">
+              <siteMapNode url="~/MemberServices/SupportTickets.aspx" title="Support Tickets" description="Support Tickets" />
+            </siteMapNode>
         </siteMapNode>
       <siteMapNode url="~/DemoPages/ReservationByType.aspx" title="Reservation by Type" description="Reserve by type" />
     </siteMapNode>
