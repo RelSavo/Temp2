@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 //GOOD TO KNOW
 //----------------------------------------------------
-//Time Span - Only holds time
+//TimeSpan - Only holds time
 //DayOfWeek - Enum. (0 = Sunday through 6 = Saturday)
 
 namespace eRestaurantSystem.Entities
