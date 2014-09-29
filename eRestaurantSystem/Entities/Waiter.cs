@@ -52,7 +52,7 @@ namespace eRestaurantSystem.Entities
         //VIRTUAL NAVIGATIONS
 
         //Bill
-        public virtual ICollection<Bill> BillsP { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
         
 
     }

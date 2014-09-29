@@ -15,6 +15,9 @@ namespace eRestaurantSystem.BLL
     [DataObject]
     public class eRestaurantController
     {
+
+        #region SpecialEvents
+
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<SpecialEvent> SpecialEvent_List ()
         {
@@ -26,21 +29,196 @@ namespace eRestaurantSystem.BLL
         }
 
         [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public SpecialEvent SpecialEventByEventCode(string eventCode)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                return context.SpecialEvents.Find(eventCode);
+            }
+        }
+
+        //ADD
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void SpecialEvents_Add(SpecialEvent item)
+        {
+            using(eRestaurantContext context = new eRestaurantContext())
+            {
+                SpecialEvent added = null;
+                added = context.SpecialEvents.Add(item);
+                context.SaveChanges();                                                  //Commits the add to the database.
+                                                                                        //Furthermore, this evaluates the annotations (validates) on the entity.
+                                                                                        //Included: [Required], [StringLength], [Range], etc.
+            }
+        }
+
+        //UPDATE
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void SpecialEvents_Update(SpecialEvent item)
+        {
+            using(eRestaurantContext context = new eRestaurantContext())
+            {
+                context.Entry<SpecialEvent>(context.SpecialEvents.Attach
+                (item)).State = System.Data.Entity.EntityState.Modified;
+                
+                context.SaveChanges();
+            }
+        }
+
+        //DELETE
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void SpecialEvents_Delete(SpecialEvent item)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                SpecialEvent existing = context.SpecialEvents.Find(item.EventCode);
+                context.SpecialEvents.Remove(existing);
+                context.SaveChanges();
+            }
+        }
+        #endregion
+
+        #region Reservations
+        
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Reservations> Reservation_List ()
         {
             using (eRestaurantContext context = new eRestaurantContext())
             {
-                return context.Reservactions.ToList();
+                return context.Reservations.ToList();
             }
         }
+
         [DataObjectMethod(DataObjectMethodType.Select, false)]
         public List<Reservations> ReservationByEvent(string eventCode)
         {
             using (eRestaurantContext Context = new eRestaurantContext())
             {
                 //Foreach rowIndicator the EventCode must equal the passed in event code.
-                return Context.Reservactions.Where(rowIndicator => rowIndicator.EventCode == eventCode).ToList();
+                return Context.Reservations.Where(rowIndicator => rowIndicator.EventCode == eventCode).ToList();
             }
         }
+
+        //ADD
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void Reservations_Add(Reservations item)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                Reservations added = null;
+                added = context.Reservations.Add(item);
+                context.SaveChanges();                                                  //Commits the add to the database.
+                //Furthermore, this evaluates the annotations (validates) on the entity.
+                //Included: [Required], [StringLength], [Range], etc.
+            }
+        }
+
+        //UPDATE
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void Reservations_Update(Reservations item)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                context.Entry<Reservations>(context.Reservations.Attach
+                (item)).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+            }
+        }
+
+        //DELETE
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void Reservations_Delete(Reservations item)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                Reservations existing = context.Reservations.Find(item.ReservationID);
+                context.Reservations.Remove(existing);
+                context.SaveChanges();
+            }
+        }
+        #endregion
+        
+        #region Waiter
+        //ADD
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void Waiter_Add(Waiter item)
+        {
+            using(eRestaurantContext context = new eRestaurantContext())
+            {
+                Waiter added = null;
+                added = context.Waiter.Add(item);
+                context.SaveChanges();                                                  //Commits the add to the database.
+                                                                                        //Furthermore, this evaluates the annotations (validates) on the entity.
+                                                                                        //Included: [Required], [StringLength], [Range], etc.
+            }
+        }
+
+        //UPDATE
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void Waiter_Update(Waiter item)
+        {
+            using(eRestaurantContext context = new eRestaurantContext())
+            {
+                context.Entry<Waiter>(context.Waiter.Attach
+                (item)).State = System.Data.Entity.EntityState.Modified;
+                
+                context.SaveChanges();
+            }
+        }
+
+        //DELETE
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void Waiter_Delete(Waiter item)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                Waiter existing = context.Waiter.Find(item.WaiterID);
+                context.Waiter.Remove(existing);
+                context.SaveChanges();
+            }
+        }
+        #endregion
+
+        #region Bill
+        //ADD
+        [DataObjectMethod(DataObjectMethodType.Insert, false)]
+        public void Bill_Add(Bill item)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                Bill added = null;
+                added = context.Bill.Add(item);
+                context.SaveChanges();                                                  //Commits the add to the database.
+                                                                                        //Furthermore, this evaluates the annotations (validates) on the entity.
+                                                                                        //Included: [Required], [StringLength], [Range], etc.
+            }
+        }
+
+        //UPDATE
+        [DataObjectMethod(DataObjectMethodType.Update, false)]
+        public void Bill_Update(Bill item)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                context.Entry<Bill>(context.Bill.Attach
+                (item)).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+            }
+        }
+
+        //DELETE
+        [DataObjectMethod(DataObjectMethodType.Delete, false)]
+        public void Bill_Delete(Bill item)
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                Bill existing = context.Bill.Find(item.BillID);
+                context.Bill.Remove(existing);
+                context.SaveChanges();
+            }
+        }
+        #endregion
+
     }
 }

@@ -18,5 +18,8 @@ namespace eRestaurantSystem.Entities
         public string EventCode { get; set; }                                             //Primary Key
         public string Description { get; set; }
         public bool Active { get; set; }
+
+        //VIRTUAL NAVIGATIONS
+        public virtual ICollection<Reservations> reservation { get; set; }
     }
 }

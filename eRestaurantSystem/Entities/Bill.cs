@@ -23,5 +23,8 @@ namespace eRestaurantSystem.Entities
         public int ReservationID { get; set; }
         public bool OrderReady { get; set; }
         public string Comment { get; set; }
+
+        //VIRTUAL NAVIGATIONS
+        public virtual Waiter Waiter { get; set; }
     }
 }
