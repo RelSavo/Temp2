@@ -16,6 +16,9 @@
               <siteMapNode url="~/MemberServices/SupportTickets.aspx" title="Support Tickets" description="Support Tickets" />
             </siteMapNode>
         </siteMapNode>
-      <siteMapNode url="~/DemoPages/ReservationByType.aspx" title="Reservation by Type" description="Reserve by type" />
-    </siteMapNode>
+      <siteMapNode url="" title="Demo Pages" description="Demo Pages">
+        <siteMapNode url="~/DemoPages/ListviewSpecialEvents.aspx" title="List View" description="List View" />
+        <siteMapNode url="~/DemoPages/ReservationByType.aspx" title="Grid View" description="Grid View" />
+      </siteMapNode>
+      </siteMapNode>
 </siteMap>

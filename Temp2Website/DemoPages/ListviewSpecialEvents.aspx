@@ -14,7 +14,7 @@
     </asp:ObjectDataSource>
     
     <!--List View-->
-    <asp:ListView ID="lv_SpecialEvents" runat="server" DataSourceID="ods_SpecialEvents" InsertItemPosition="FirstItem">
+    <asp:ListView ID="lv_SpecialEvents" runat="server" DataSourceID="ods_SpecialEvents" InsertItemPosition="FirstItem" DataKeyNames="EventCode">
         <AlternatingItemTemplate>
             <tr style="background-color: #FFFFFF;color: #284775;">
                 <td>
@@ -40,7 +40,7 @@
                 </td>
                 <td>
                     <asp:TextBox ID="EventCodeTextBox" runat="server" Text='<%# Bind("EventCode") %>' 
-                        Enable="false"/>
+                        Enabled="false"/>
                 </td>
                 <td>
                     <asp:TextBox ID="DescriptionTextBox" runat="server" Text='<%# Bind("Description") %>' />
