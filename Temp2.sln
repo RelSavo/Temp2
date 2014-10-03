@@ -31,6 +31,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2E77CF6E-2A8D-446B-876C-34D80FA0CD12}"
 	ProjectSection(SolutionItems) = preProject
 		DONT FORGET.txt = DONT FORGET.txt
+		LINQ.txt = LINQ.txt
 	EndProjectSection
 EndProject
 Global

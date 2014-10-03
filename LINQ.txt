@@ -1,0 +1,34 @@
+var results = from anItem in Reservations
+where anItem.SpecialEvents.EventCode.Equals("S") &&
+DateTime.Today.AddDays(-30) < anItem.ReservationDate
+orderby anItem.NumberInParty descending
+select new
+{
+	anItem.CustomerName,
+	anItem.NumberInParty,
+	anItem.SpecialEvents.Description,
+	ResDate = string.Format("{0:dd MMM, yyyy}", anItem.ReservationDate)
+};
+results.Dump();
+results.Count().Dump("Count of Instances");
+
+var entity = from anItem in SpecialEvents
+select anItem;
+entity.Dump();
+
+var bill = from billStuff in Bills
+select billStuff;
+bill.Dump();
+
+var resultsOne = from anItemOne in Bills 
+join anItemTwo in BillItems on anItemOne.BillID equals anItemTwo.BillID
+select new
+{
+	anItemOne.BillID,
+	anItemOne.PaidStatus,
+	anItemOne.NumberInParty,
+	anItemOne.WaiterID,
+	anItemTwo.SalePrice,
+	anItemTwo.UnitCost
+};
+resultsOne.Dump();
