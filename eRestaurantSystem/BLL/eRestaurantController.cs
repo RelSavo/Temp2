@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 #region Additional Namespaces
     using eRestaurantSystem.Entities;
     using eRestaurantSystem.DAL;
+    using eRestaurantSystem.POCOS;
     using System.ComponentModel;
 #endregion
 
@@ -226,5 +227,31 @@ namespace eRestaurantSystem.BLL
         }
         #endregion
 
+        #region LINQ Queries
+            [DataObjectMethod(DataObjectMethodType.Select, false)]
+            public List<CategoryMenuItems> GetCategoryMenuItems()
+            {
+                using(eRestaurantContext context = new eRestaurantContext())
+                { 
+                    var results = from category in context.menuCategory
+                                  orderby category.Description
+                                  select new CategoryMenuItems()
+                                  {
+                                      Description = category.Description,
+                                      MenuItem = from rowItem in category.Item
+                                                 where rowItem.Active
+                                                 select new MenuItem()
+                                                 {
+                                                     Description = rowItem.Description,
+                                                     CurrentPrice = rowItem.CurrentPrice,
+                                                     Calories = rowItem.Calories,
+                                                     Comment = rowItem.Comment
+                                                 }
+                                  };
+
+                    return results.ToList();
+                }
+            }
+        #endregion
     }
 }
