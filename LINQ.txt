@@ -1,3 +1,8 @@
+
+==========================================
+==============SAMPLE QUERIES==============
+==========================================
+
 var results = from anItem in Reservations
 where anItem.SpecialEvents.EventCode.Equals("S") &&
 DateTime.Today.AddDays(-30) < anItem.ReservationDate
@@ -32,3 +37,45 @@ select new
 	anItemTwo.UnitCost
 };
 resultsOne.Dump();
+
+
+
+=========================================
+===============USING POCOS===============
+=========================================
+
+void Main()
+{	
+	var results = from category in MenuCategories
+		orderby category.Description
+		select new CategoryMenuItems()
+		{
+			Description = category.Description,
+			MenuItem = from rowItem in category.Items
+				where rowItem.Active 
+				select new MenuItem()
+				{
+					Description = rowItem.Description,
+					CurrentPrice = rowItem.CurrentPrice,
+					Calories = rowItem.Calories,
+					Comment = rowItem.Comment
+				}
+		};
+
+	results.Dump();
+}
+
+// Define other methods and classes here
+public class MenuItem
+	{
+		public string Description { get; set; }
+		public decimal CurrentPrice { get; set; }
+		public int? Calories { get; set; }
+		public string Comment { get; set; }
+	}
+
+public class CategoryMenuItems
+	{
+		public string Description { get; set; }
+		public IEnumerable MenuItem { get; set; }
+	}

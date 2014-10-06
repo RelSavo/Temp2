@@ -233,7 +233,7 @@ namespace eRestaurantSystem.BLL
             {
                 using(eRestaurantContext context = new eRestaurantContext())
                 { 
-                    var results = from category in context.menuCategory
+                    var results = from category in context.MenuCategory
                                   orderby category.Description
                                   select new CategoryMenuItems()
                                   {

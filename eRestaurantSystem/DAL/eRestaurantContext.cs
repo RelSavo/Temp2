@@ -20,7 +20,7 @@ namespace eRestaurantSystem.DAL
         public DbSet<Reservations> Reservations { get; set; }
         public DbSet<Waiter> Waiter { get; set; }
         public DbSet<Bill> Bill { get; set; }
-        public DbSet<MenuCategory> menuCategory { get; set; }
-        public DbSet<Item> items { get; set; }
+        public DbSet<MenuCategory> MenuCategory { get; set; }
+        public DbSet<Item> Items { get; set; }
     }
 }
