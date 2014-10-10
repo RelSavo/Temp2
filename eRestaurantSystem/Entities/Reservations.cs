@@ -23,6 +23,8 @@ namespace eRestaurantSystem.Entities
 
         //VIRTUAL NAVIGATIONS
         public virtual SpecialEvent SpecialEvent { get; set; }
+        public virtual ICollection<Table> Tables { get; set; }
+
     }
 
     

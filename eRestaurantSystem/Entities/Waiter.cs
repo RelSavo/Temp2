@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 #region Additional Namespaces
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 #endregion
 
 //GOOD TO KNOW
@@ -48,6 +49,15 @@ namespace eRestaurantSystem.Entities
         public DateTime ReleaseDate { get; set; }
 
 
+        //Read only Property
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return string.Format("{0}, {1}", FirstName, LastName);
+            }
+        }
 
         //VIRTUAL NAVIGATIONS
 
