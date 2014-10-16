@@ -16,6 +16,7 @@ namespace eRestaurantSystem.Entities
         //Accessors
         [Key]                                                                             //Sets the following property as a primary key.
         public string EventCode { get; set; }                                             //Primary Key
+        [Required]
         public string Description { get; set; }
         public bool Active { get; set; }
 
