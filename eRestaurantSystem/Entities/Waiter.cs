@@ -46,8 +46,7 @@ namespace eRestaurantSystem.Entities
         public DateTime HireDate { get; set; }
         
         //Release Date
-        public DateTime ReleaseDate { get; set; }
-
+        public DateTime? ReleaseDate { get; set; }
 
         //Read only Property
         [NotMapped]

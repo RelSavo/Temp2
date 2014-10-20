@@ -8,7 +8,7 @@ using System.Threading.Tasks;
     using System.Collections;
 #endregion
 
-namespace eRestaurantSystem.POCOS
+namespace eRestaurantSystem.DTOs
 {
     public class CategoryMenuItems
     {

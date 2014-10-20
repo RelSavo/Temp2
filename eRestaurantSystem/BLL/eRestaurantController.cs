@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 #region Additional Namespaces
     using eRestaurantSystem.Entities;
     using eRestaurantSystem.DAL;
-    using eRestaurantSystem.POCOS;
+    using eRestaurantSystem.DTOs;
     using System.ComponentModel;
 #endregion
 
@@ -146,6 +146,36 @@ namespace eRestaurantSystem.BLL
         #endregion
         
         #region Waiter
+        //LIST
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Waiter> Waiter_List()
+        {
+            //Interfacing with the Context class which inherits
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                //Using Context DbSet to get entity data.
+                //CODE: return context.SpecialEvents.ToList();
+
+                //Get a list of instances for entity using LINQ
+                var results = from item in context.Waiter
+                              select item;
+                return results.ToList();
+            }
+        }
+
+
+        //Get Waiter by ID
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public Waiter GetWaiter(int waiterID)
+        {
+            using (eRestaurantContext Context = new eRestaurantContext())
+            {
+                //Foreach rowIndicator the EventCode must equal the passed in event code.
+                return Context.Waiter.Find(waiterID);
+            }
+        }
+
+
         //ADD
         [DataObjectMethod(DataObjectMethodType.Insert, false)]
         public void Waiter_Add(Waiter item)
@@ -229,13 +259,13 @@ namespace eRestaurantSystem.BLL
 
         #region LINQ Queries
             [DataObjectMethod(DataObjectMethodType.Select, false)]
-            public List<CategoryMenuItems> GetCategoryMenuItems()
+            public List<DTOs.CategoryMenuItems> GetCategoryMenuItems()
             {
                 using(eRestaurantContext context = new eRestaurantContext())
                 { 
                     var results = from category in context.MenuCategory
                                   orderby category.Description
-                                  select new CategoryMenuItems()
+                                  select new DTOs.CategoryMenuItems()
                                   {
                                       Description = category.Description,
                                       MenuItem = from rowItem in category.Item
