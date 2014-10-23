@@ -486,6 +486,17 @@ h6,
   line-height: 1.1;
 }
 
+.BlueHeader
+{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  height: 50px;
+  line-height: 50px;
+  background-color: #003366;
+  color: #FFFFFF;
+  text-align: center;
+}
+
 h1 small,
 h2 small,
 h3 small,

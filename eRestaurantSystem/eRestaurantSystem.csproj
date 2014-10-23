@@ -57,6 +57,7 @@
     <Compile Include="Entities\Waiter.cs" />
     <Compile Include="DTOs\CategoryMenuItems.cs" />
     <Compile Include="DTOs\MenuItem.cs" />
+    <Compile Include="POCOs\CategoryMenuItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

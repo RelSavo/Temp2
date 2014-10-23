@@ -20,6 +20,7 @@
         <siteMapNode url="~/DemoPages/ListviewSpecialEvents.aspx" title="List View" description="List View" />
         <siteMapNode url="~/DemoPages/ReservationByType.aspx" title="Grid View" description="Grid View" />
         <siteMapNode url="~/DemoPages/RepeaterMenuCategories.aspx" title="Repeater" description="Repeater" />
+        <siteMapNode url="~/DemoPages/ReportCategoryMenuItems.aspx" title="Report" description="Report" />
       </siteMapNode>
       </siteMapNode>
 </siteMap>

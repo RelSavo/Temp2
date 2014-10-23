@@ -283,5 +283,33 @@ namespace eRestaurantSystem.BLL
                 }
             }
         #endregion
+
+        #region Reports
+            
+            //Menu Category Items
+            [DataObjectMethod(DataObjectMethodType.Select, false)]
+            public List<POCOs.CategoryMenuItems> CategoryMenuItems_Report()
+            {
+                //Interfacing with the Context class which inherits
+                using (eRestaurantContext context = new eRestaurantContext())
+                {
+                    //Using Context DbSet to get entity data.
+                    //CODE: return context.SpecialEvents.ToList();
+
+                    //Get a list of instances for entity using LINQ
+                    var results = from Data in context.Items
+                                  select new POCOs.CategoryMenuItems
+                                  {
+                                      CategoryDescription = Data.MenuCategory.Description,
+                                      ItemDescription = Data.Description,
+                                      Price = Data.CurrentPrice,
+                                      Calories = Data.Calories,
+                                      Comment = Data.Comment
+                                  };
+
+                    return results.ToList();
+                }
+            }
+        #endregion
     }
 }

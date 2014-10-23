@@ -1,3 +1,4 @@
 1. REFERENCE THE SYSTEM DLL IN THE WEBSITE.
-2. ADD THE CONTEXT TAG IN THE WEB.CONFIG
-3. List View Properties>DataKeyNames "Primary Key Column"
+2. ADD THE CONTEXT TAG IN THE WEB.CONFIG.
+3. List View Properties>DataKeyNames "Primary Key Column".
+4. Make all entities/POCOs/DTOs public.
