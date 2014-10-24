@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 /*
  * THIS IS CONSIDERED A FLAT FILE AND HAS NO COLLETIONS OF DATA.
- * (ie. IEnumerable)
+ * (ie. IEnumerable, NAVIGATION)
  * 
  */ 
 

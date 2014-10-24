@@ -310,6 +310,35 @@ namespace eRestaurantSystem.BLL
                     return results.ToList();
                 }
             }
+
+
+            //Total Item Sales By Menu Category
+            [DataObjectMethod(DataObjectMethodType.Select, false)]
+            public List<POCOs.TotalItemSalesByMenuCategory> TotalItemSalesByMenuCategory_Report()
+            {
+                //Interfacing with the Context class which inherits
+                using (eRestaurantContext context = new eRestaurantContext())
+                {
+                    //Using Context DbSet to get entity data.
+                    //CODE: return context.SpecialEvents.ToList();
+
+                    //Get a list of instances for entity using LINQ
+                    var results = from data in context.Items
+                                  orderby data.MenuCategory.Description,
+                                          data.Description
+                                  select new POCOs.TotalItemSalesByMenuCategory
+                                  {
+                                      ItemDescription = data.Description,
+                                      CategoryDescription = data.MenuCategory.Description,
+                                      Quantity = data.BillItems.Sum(x => x.Quantity),
+                                      Price = data.BillItems.Sum(x => x.SalePrice * x.Quantity),
+                                      Cost = data.BillItems.Sum(x => x.UnitCost * x.Quantity)
+                                  };
+
+                    return results.ToList();
+                }
+            }
+
         #endregion
     }
 }

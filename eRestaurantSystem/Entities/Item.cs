@@ -25,5 +25,7 @@ namespace eRestaurantSystem.Entities
 
         //Navigation
         public virtual MenuCategory MenuCategory { get; set; }
+
+        public virtual ICollection<BillItem> BillItems { get; set; }
     }
 }
