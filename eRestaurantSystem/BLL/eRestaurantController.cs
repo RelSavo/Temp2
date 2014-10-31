@@ -257,6 +257,7 @@ namespace eRestaurantSystem.BLL
         }
         #endregion
 
+
         #region LINQ Queries
             [DataObjectMethod(DataObjectMethodType.Select, false)]
             public List<DTOs.CategoryMenuItems> GetCategoryMenuItems()
@@ -350,6 +351,45 @@ namespace eRestaurantSystem.BLL
                     var results = context.Bill.Max(x => x.BillDate);
                     return results;
                 }
+            }
+        #endregion
+
+        #region ReservationsByTime
+            //List ReservationsByTime
+            [DataObjectMethod(DataObjectMethodType.Select,false)]
+            public List<ReservationCollection> ReservationsByTime(DateTime date)
+            {
+                using (eRestaurantContext context = new eRestaurantContext())
+                {
+                    var results = from data in context.Reservations
+                                  where data.ReservationDate.Year == date.Year
+                                          && data.ReservationDate.Month == date.Month
+                                          && data.ReservationDate.Day == date.Day
+                                          && data.ReservationStatus == "B"
+                                  select new POCOs.ReservationSummary
+                                  {
+                                      Name = data.CustomerName,
+                                      Contact = data.ContactPhone,
+                                      Date = data.ReservationDate,
+                                      NumberInParty = data.NumberInParty,
+                                      Status = data.ReservationStatus,
+                                      EventType = data.SpecialEvent.Description
+                                  };
+
+                    //Example of Grouping.
+                    var finalResults = from data in results
+                                       orderby data.NumberInParty
+                                       group data by data.Date.TimeOfDay into itemGroup
+                                       select new DTOs.ReservationCollection
+                                       {
+                                           SeatingTime = itemGroup.Key.ToString(),
+                                           Reservations = itemGroup.ToList()
+                                       };
+
+
+                    return finalResults.ToList();
+                }
+                
             }
         #endregion
     }
